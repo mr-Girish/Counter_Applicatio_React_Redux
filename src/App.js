@@ -1,23 +1,17 @@
-import logo from './logo.svg';
 import './App.css';
-
+import { useState } from 'react';
+import { useSelector,useDispatch } from 'react-redux';
+// import IncrementDecrementTask from './reducers/MainTask'
+import {Increment,Decrement} from './actions/index'
 function App() {
+  const mainState=useSelector((state)=>state.IncrementDecrementTask);
+  const dispatch= useDispatch();
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Redux Functionality with Counter Application</h1>
+      <button onClick={()=>dispatch(Increment())}>increment</button>
+        {mainState}
+      <button onClick={()=>dispatch(Decrement())}>decrement</button>
     </div>
   );
 }
